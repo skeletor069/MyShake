@@ -3,13 +3,51 @@ import numpy as np
 import tensorflow as tf
 from tensorflow import keras
 
+
+def GetOutputValueByType(output_type):
+	output = [0,0,1,0]
+	if output_type == 1:
+		output = [1,0,0,0]
+	elif output_type == 2:
+		output = [0,1,0,0]
+	elif output_type == 3:
+		output = [0,0,1,0]
+	elif output_type == 4:
+		output = [0,0,0,1]
+	return output
+
+def GetDataset(input_file, output):
+	num_lines = sum(1 for line in open(input_file))
+	data = np.random.random((num_lines, 3))
+	labels = np.random.random((num_lines, 4))
+	with open(input_file) as fin:
+		i = 0
+		for line in fin:
+			splitted = line.split()
+			data[i][0] = splitted[0]
+			data[i][1] = splitted[1]
+			data[i][2] = splitted[2]
+			labels[i] = output
+			i=i+1
+	return data,labels
+
+
 if len(sys.argv) != 3:
 	print("incorrect arguments");
 	exit(0)
 
 input_file = sys.argv[1]
-output_value = sys.argv[2]
-print(output_value)
+output_type = int(sys.argv[2])
+
+if output_type > 4:
+	exit(0);
+
+output = GetOutputValueByType(output_type)
+
+data,labels = GetDataset(input_file, output)
+
+print(data)
+print(labels)
 
 # # python3 TrainLates.py input.txt sample_type 
 
