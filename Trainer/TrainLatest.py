@@ -1,4 +1,5 @@
 import sys
+import os
 import numpy as np
 import tensorflow as tf
 from tensorflow import keras
@@ -38,6 +39,12 @@ if len(sys.argv) != 3:
 
 input_file = sys.argv[1]
 output_type = int(sys.argv[2])
+keras_file = "keras_model.h5"
+backup_dir = "Backup-Models/"
+
+bk_file_list = os.listdir(backup_dir) # dir is your directory path
+number_files = len(bk_file_list)
+backup_file = backup_dir+str(number_files)+keras_file
 
 if output_type > 4:
 	exit(0);
@@ -46,8 +53,15 @@ output = GetOutputValueByType(output_type)
 
 data,labels = GetDataset(input_file, output)
 
-print(data)
-print(labels)
+model = keras.models.load_model(keras_file)
+model.compile(optimizer=tf.train.AdamOptimizer(0.001),
+              loss='categorical_crossentropy',
+              metrics=['accuracy'])
+
+model.fit(data, labels, epochs=4000, batch_size=2)
+tf.keras.models.save_model(model, keras_file)
+tf.keras.models.save_model(model, backup_file)
+
 
 # # python3 TrainLates.py input.txt sample_type 
 
