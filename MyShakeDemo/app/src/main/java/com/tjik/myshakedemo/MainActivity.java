@@ -53,6 +53,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     long demoLongitude = 100;
     long demoLatitude = 100;
     long maximumRadius = 100;
+    //
 
 
     LocationManager lm;
