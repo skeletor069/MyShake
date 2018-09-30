@@ -1,0 +1,26 @@
+disp('Chamba : ');
+GetPeakTabbed('chamba.txt');
+disp('DLU : ');
+GetPeakTabbed('DLU.txt');
+disp('IGN : ');
+GetPeakTabbed('IGN.txt');
+disp('VCD : ');
+GetPeakTabbed('VCD.txt');
+disp('JHR : ');
+GetPeakTabbed('JHR.txt');
+disp('POR : ');
+GetPeakTabbed('POR.txt');
+disp('Chamba 2: ');
+GetPeakTabbed('CHM2.txt');
+disp('HAM : ');
+GetPeakTabbed('HAM.txt');
+disp('JMU : ');
+GetPeakTabbed('JMU.txt');
+
+disp('#################');
+disp('Random : ');
+GetPeakSpaced('random.txt');
+% disp('Table : ');
+% GetPeakSpaced('table.txt');
+disp('Walk : ');
+GetPeakSpaced('walk.txt');
