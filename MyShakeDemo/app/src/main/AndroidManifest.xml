@@ -32,6 +32,13 @@
             android:name=".DataCollectionService"
             android:enabled="true">
         </service>
+        <receiver android:name=".DataCollectionServiceBroadcastReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="DataCollection.RestartService"></action>
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

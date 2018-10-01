@@ -1,10 +1,17 @@
 package com.tjik.myshakedemo;
 
+import android.annotation.TargetApi;
 import android.app.ActivityManager;
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.PendingIntent;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.preference.PreferenceManager;
+import android.renderscript.RenderScript;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -37,7 +44,7 @@ public class DataCollection extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         usersRef = database.getReference("users");
         defaultPref = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        dataCollectionService = new DataCollectionService(this);
+        dataCollectionService = new DataCollectionService(this, defaultPref);
         serviceIntent = new Intent(this, dataCollectionService.getClass());
     }
 
@@ -76,8 +83,11 @@ public class DataCollection extends AppCompatActivity {
         return false;
     }
 
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     void StartDataCollectionService(){
         if(!isServiceRunning(dataCollectionService.getClass())){
+//
+
             startService(serviceIntent);
         }
     }

@@ -32,11 +32,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/tjik/myshakedemo/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="365">
-              <caret line="257" column="9" lean-forward="false" selection-start-line="234" selection-start-column="8" selection-end-line="257" selection-end-column="9" />
+            <state relative-caret-position="191">
+              <caret line="122" column="74" lean-forward="true" selection-start-line="119" selection-start-column="8" selection-end-line="122" selection-end-column="74" />
               <folding />
             </state>
           </provider>
@@ -45,8 +45,8 @@
       <file leaf-file-name="DataCollection.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/tjik/myshakedemo/DataCollection.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-9">
-              <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+            <state relative-caret-position="183">
+              <caret line="46" column="75" lean-forward="false" selection-start-line="46" selection-start-column="75" selection-end-line="46" selection-end-column="75" />
               <folding>
                 <element signature="method#CheckRegistration#0;class#DataCollection#0" expanded="false" />
                 <element signature="method#onDestroy#0;class#DataCollection#0" expanded="false" />
@@ -58,14 +58,26 @@
       <file leaf-file-name="DataCollectionService.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/tjik/myshakedemo/DataCollectionService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="145">
-              <caret line="46" column="15" lean-forward="false" selection-start-line="46" selection-start-column="15" selection-end-line="46" selection-end-column="15" />
+            <state relative-caret-position="811">
+              <caret line="73" column="28" lean-forward="true" selection-start-line="73" selection-start-column="28" selection-end-line="73" selection-end-column="28" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1017#1018#0" expanded="true" />
-                <element signature="e#1044#1045#0" expanded="true" />
-                <element signature="e#1119#1360#0" expanded="true" />
-                <element signature="e#1359#1360#0" expanded="true" />
+                <element signature="e#2203#2204#0" expanded="true" />
+                <element signature="e#2230#2231#0" expanded="true" />
+                <element signature="e#2477#2792#0" expanded="true" />
+                <element signature="e#2791#2792#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DataCollectionServiceBroadcastReceiver.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/tjik/myshakedemo/DataCollectionServiceBroadcastReceiver.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="9" column="70" lean-forward="false" selection-start-line="9" selection-start-column="70" selection-end-line="9" selection-end-column="70" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -74,7 +86,7 @@
       <file leaf-file-name="TrackerActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/tjik/myshakedemo/TrackerActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1395">
+            <state relative-caret-position="1185">
               <caret line="99" column="0" lean-forward="false" selection-start-line="99" selection-start-column="0" selection-end-line="99" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -83,11 +95,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AndroidManifest.xml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="AndroidManifest.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="22" column="25" lean-forward="false" selection-start-line="22" selection-start-column="25" selection-end-line="22" selection-end-column="25" />
+            <state relative-caret-position="449">
+              <caret line="38" column="69" lean-forward="false" selection-start-line="38" selection-start-column="69" selection-end-line="38" selection-end-column="69" />
               <folding />
             </state>
           </provider>
@@ -2373,9 +2385,10 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_tracker.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/tjik/myshakedemo/TrackerActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/tjik/myshakedemo/SensorService.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/tjik/myshakedemo/DataCollectionService.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/tjik/myshakedemo/DataCollection.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/tjik/myshakedemo/DataCollectionServiceBroadcastReceiver.java" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/tjik/myshakedemo/DataCollection.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/tjik/myshakedemo/DataCollectionService.java" />
       </list>
     </option>
   </component>
@@ -2400,8 +2413,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="ProjectPane" />
+      <pane id="PackagesPane" />
       <pane id="AndroidView">
         <subPane>
           <expand>
@@ -2425,22 +2439,10 @@
               <item name="java" type="edd41e36:AndroidSourceTypeNode" />
               <item name="myshakedemo" type="cbb59c9e:AndroidPsiDirectoryNode" />
             </path>
-            <path>
-              <item name="MyShakeDemo" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="res" type="d4f16f75:AndroidResFolderNode" />
-            </path>
-            <path>
-              <item name="MyShakeDemo" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="res" type="d4f16f75:AndroidResFolderNode" />
-              <item name="layout" type="ddeffd01:AndroidResFolderTypeNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="ProjectPane" />
       <pane id="Scratches" />
     </panes>
   </component>
@@ -2624,6 +2626,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="20" y="43" width="1400" height="757" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -2632,11 +2635,10 @@
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32930514" sideWeight="0.18335788" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298969" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Logcat" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.49093655" sideWeight="0.8166421" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.49093655" sideWeight="0.8166421" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -2644,9 +2646,9 @@
       <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32930514" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -2654,6 +2656,7 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298969" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -2697,6 +2700,277 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/tjik/myshakedemo/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3330">
+          <caret line="257" column="9" lean-forward="false" selection-start-line="234" selection-start-column="8" selection-end-line="257" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/tjik/myshakedemo/TrackerActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1185">
+          <caret line="99" column="0" lean-forward="false" selection-start-line="99" selection-start-column="0" selection-end-line="99" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/tjik/myshakedemo/DataCollectionService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="22" column="5" lean-forward="true" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2203#2204#0" expanded="true" />
+            <element signature="e#2230#2231#0" expanded="true" />
+            <element signature="e#2477#2792#0" expanded="true" />
+            <element signature="e#2791#2792#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" column="25" lean-forward="false" selection-start-line="22" selection-start-column="25" selection-end-line="22" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/Library/Android/sdk/platforms/android-27/android.jar!/android/content/ContextWrapper.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="975">
+          <caret line="134" column="16" lean-forward="false" selection-start-line="134" selection-start-column="16" selection-end-line="134" selection-end-column="16" />
+          <folding>
+            <marker date="1524436730537" expanded="false" signature="0:104" ph="/.../" />
+            <marker date="1524436730537" expanded="false" signature="139:1073" ph="..." />
+            <marker date="1524436730537" expanded="false" signature="1160:1171" ph=" { " />
+            <marker date="1524436730537" expanded="false" signature="1207:1213" ph=" }" />
+            <marker date="1524436730537" expanded="false" signature="1265:1276" ph=" { " />
+            <marker date="1524436730537" expanded="false" signature="1312:1318" ph=" }" />
+            <marker date="1524436730537" expanded="false" signature="1355:1366" ph=" { " />
+            <marker date="1524436730537" expanded="false" signature="1402:1408" ph=" }" />
+            <marker date="1524436730537" expanded="false" signature="1445:1456" ph=" { " />
+            <marker date="1524436730537" expanded="false" signature="1492:1498" ph=" }" />
+            <marker date="1524436730537" expanded="false" signature="1535:1546" ph=" { " />
+            <marker date="1524436730537" expanded="false" signature="1582:1588" ph=" }" />
+            <marker date="1524436730537" expanded="false" signature="1635:1646" ph=" { " />
+            <marker date="1524436730537" expanded="false" signature="1682:1688" ph=" }" />
+            <marker date="1524436730537" expanded="false" signature="1737:1748" ph=" { " />
+            <marker date="1524436730537" expanded="false" signature="1784:1790" ph=" }" />
+            <marker date="1524436730537" expanded="false" signature="1825:1836" ph=" { " />
+            <marker date="1524436730537" expanded="false" signature="1872:1878" ph=" }" />
+            <marker date="1524436730537" expanded="false" signature="1922:1933" ph=" { " />
+            <marker date="1524436730537" expanded="false" signature="1969:1975" ph=" }" />
+            <marker date="1524436730537" expanded="false" signature="2012:2023" ph=" { " />
+            <marker date="1524436730537" expanded="false" signature="2059:2065" ph=" }" />
+            <marker date="1524436730537" expanded="false" signature="2094:2105" ph=" { " />
+            <marker date="1524436730537" expanded="false" signature="2141:2147" ph=" }" />
+            <marker date="1524436730537" expanded="false" signature="2188:2199" ph=" { " />
+            <marker date="1524436730537" expanded="false" signature="2235:2241" ph=" }" />
+            <marker date="1524436730537" expanded="false" signature="2277:2288" ph=" { " />
+            <marker date="1524436730537" expanded="false" signature="2324:2330" ph=" }" />
+            <marker date="1524436730537" expanded="false" signature="2379:2390" ph=" { " />
+            <marker date="1524436730537" expanded="false" signature="2426:2432" ph=" }" />
+            <marker date="1524436730537" expanded="false" signature="2476:2487" ph=" { " />
+            <marker date="1524436730537" expanded="false" signature="2523:2529" ph=" }" />
+            <marker date="1524436730537" expanded="false" signature="2569:2580" ph=" { " />
+            <marker date="1524436730537" expanded="false" signature="2616:2622" ph=" }" />
+            <marker date="1524436730537" expanded="true" signature="2697:2749" ph="{...}" />
+            <marker date="1524436730537" expanded="true" signature="2832:2884" ph="{...}" />
+            <marker date="1524436730537" expanded="false" signature="2941:2952" ph=" { " />
+            <marker date="1524436730537" expanded="false" signature="2988:2994" ph=" }" />
+            <marker date="1524436730537" expanded="true" signature="3079:3131" ph="{...}" />
+            <marker date="1524436730537" expanded="true" signature="3228:3280" ph="{...}" />
+            <marker date="1524436730537" expanded="false" signature="3324:3335" ph=" { " />
+            <marker date="1524436730537" expanded="false" signature="3371:3377" ph=" }" />
+            <marker date="1524436730537" expanded="false" signature="3425:3436" ph=" { " />
+            <marker date="1524436730537" expanded="false" signature="3472:3478" ph=" }" />
+            <marker date="1524436730537" expanded="false" signature="3510:3521" ph=" { " />
+            <marker date="1524436730537" expanded="false" signature="3557:3563" ph=" }" />
+            <marker date="1524436730537" expanded="false" signature="3593:3604" ph=" { " />
+            <marker date="1524436730537" expanded="false" signature="3640:3646" ph=" }" />
+            <marker date="1524436730537" expanded="true" signature="3677:3688" ph=" { " />
+            <marker date="1524436730537" expanded="true" signature="3724:3730" ph=" }" />
+            <marker date="1524436730537" expanded="false" signature="3769:3780" ph=" { " />
+            <marker date="1524436730537" expanded="false" signature="3816:3822" ph=" }" />
+            <marker date="1524436730537" expanded="false" signature="3872:3883" ph=" { " />
+            <marker date="1524436730537" expanded="false" signature="3919:3925" ph=" }" />
+            <marker date="1524436730537" expanded="false" signature="3978:3989" ph=" { " />
+            <marker date="1524436730537" expanded="false" signature="4025:4031" ph=" }" />
+            <marker date="1524436730537" expanded="false" signature="4060:4071" ph=" { " />
+            <marker date="1524436730537" expanded="false" signature="4107:4113" ph=" }" />
+            <marker date="1524436730537" expanded="false" signature="4145:4156" ph=" { " />
+            <marker date="1524436730537" expanded="false" signature="4192:4198" ph=" }" />
+            <marker date="1524436730537" expanded="false" signature="4229:4240" ph=" { " />
+            <marker date="1524436730537" expanded="false" signature="4276:4282" ph=" }" />
+            <marker date="1524436730537" expanded="false" signature="4317:4328" ph=" { " />
+            <marker date="1524436730537" expanded="false" signature="4364:4370" ph=" }" />
+            <marker date="1524436730537" expanded="false" signature="4409:4420" ph=" { " />
+            <marker date="1524436730537" expanded="false" signature="4456:4462" ph=" }" />
+            <marker date="1524436730537" expanded="false" signature="4504:4515" ph=" { " />
+            <marker date="1524436730537" expanded="false" signature="4551:4557" ph=" }" />
+            <marker date="1524436730537" expanded="false" signature="4599:4610" ph=" { " />
+            <marker date="1524436730537" expanded="false" signature="4646:4652" ph=" }" />
+            <marker date="1524436730537" expanded="false" signature="4699:4710" ph=" { " />
+            <marker date="1524436730537" expanded="false" signature="4746:4752" ph=" }" />
+            <marker date="1524436730537" expanded="true" signature="4847:4899" ph="{...}" />
+            <marker date="1524436730537" expanded="true" signature="5029:5081" ph="{...}" />
+            <marker date="1524436730537" expanded="true" signature="5155:5207" ph="{...}" />
+            <marker date="1524436730537" expanded="false" signature="5255:5266" ph=" { " />
+            <marker date="1524436730537" expanded="false" signature="5302:5308" ph=" }" />
+            <marker date="1524436730537" expanded="false" signature="5354:5365" ph=" { " />
+            <marker date="1524436730537" expanded="false" signature="5401:5407" ph=" }" />
+            <marker date="1524436730537" expanded="false" signature="5443:5454" ph=" { " />
+            <marker date="1524436730537" expanded="false" signature="5490:5496" ph=" }" />
+            <marker date="1524436730537" expanded="true" signature="5502:5520" ph="/**...*/" />
+            <marker date="1524436730537" expanded="false" signature="5571:5582" ph=" { " />
+            <marker date="1524436730537" expanded="false" signature="5618:5624" ph=" }" />
+            <marker date="1524436730537" expanded="true" signature="5630:5648" ph="/**...*/" />
+            <marker date="1524436730537" expanded="false" signature="5700:5711" ph=" { " />
+            <marker date="1524436730537" expanded="false" signature="5747:5753" ph=" }" />
+            <marker date="1524436730537" expanded="true" signature="5759:5777" ph="/**...*/" />
+            <marker date="1524436730537" expanded="false" signature="5842:5853" ph=" { " />
+            <marker date="1524436730537" expanded="false" signature="5889:5895" ph=" }" />
+            <marker date="1524436730537" expanded="true" signature="5901:5919" ph="/**...*/" />
+            <marker date="1524436730537" expanded="false" signature="5985:5996" ph=" { " />
+            <marker date="1524436730537" expanded="false" signature="6032:6038" ph=" }" />
+            <marker date="1524436730537" expanded="true" signature="6044:6062" ph="/**...*/" />
+            <marker date="1524436730537" expanded="true" signature="6142:6194" ph="{...}" />
+            <marker date="1524436730537" expanded="true" signature="6200:6218" ph="/**...*/" />
+            <marker date="1524436730537" expanded="true" signature="6301:6353" ph="{...}" />
+            <marker date="1524436730537" expanded="true" signature="6359:6377" ph="/**...*/" />
+            <marker date="1524436730537" expanded="true" signature="6446:6498" ph="{...}" />
+            <marker date="1524436730537" expanded="false" signature="6544:6555" ph=" { " />
+            <marker date="1524436730537" expanded="false" signature="6591:6597" ph=" }" />
+            <marker date="1524436730537" expanded="true" signature="6660:6712" ph="{...}" />
+            <marker date="1524436730537" expanded="false" signature="6763:6774" ph=" { " />
+            <marker date="1524436730537" expanded="false" signature="6810:6816" ph=" }" />
+            <marker date="1524436730537" expanded="true" signature="6884:6936" ph="{...}" />
+            <marker date="1524436730537" expanded="true" signature="7089:7141" ph="{...}" />
+            <marker date="1524436730537" expanded="true" signature="7310:7362" ph="{...}" />
+            <marker date="1524436730537" expanded="false" signature="7408:7419" ph=" { " />
+            <marker date="1524436730537" expanded="false" signature="7455:7461" ph=" }" />
+            <marker date="1524436730537" expanded="true" signature="7535:7587" ph="{...}" />
+            <marker date="1524436730537" expanded="true" signature="7668:7720" ph="{...}" />
+            <marker date="1524436730537" expanded="true" signature="7913:7965" ph="{...}" />
+            <marker date="1524436730537" expanded="true" signature="8035:8087" ph="{...}" />
+            <marker date="1524436730537" expanded="true" signature="8184:8236" ph="{...}" />
+            <marker date="1524436730537" expanded="true" signature="8452:8504" ph="{...}" />
+            <marker date="1524436730537" expanded="true" signature="8510:8528" ph="/**...*/" />
+            <marker date="1524436730537" expanded="false" signature="8595:8606" ph=" { " />
+            <marker date="1524436730537" expanded="false" signature="8642:8648" ph=" }" />
+            <marker date="1524436730537" expanded="true" signature="8654:8672" ph="/**...*/" />
+            <marker date="1524436730537" expanded="true" signature="8859:8911" ph="{...}" />
+            <marker date="1524436730537" expanded="true" signature="8917:8935" ph="/**...*/" />
+            <marker date="1524436730537" expanded="false" signature="9004:9015" ph=" { " />
+            <marker date="1524436730537" expanded="false" signature="9051:9057" ph=" }" />
+            <marker date="1524436730537" expanded="true" signature="9063:9081" ph="/**...*/" />
+            <marker date="1524436730537" expanded="true" signature="9172:9224" ph="{...}" />
+            <marker date="1524436730537" expanded="true" signature="9230:9248" ph="/**...*/" />
+            <marker date="1524436730537" expanded="true" signature="9458:9510" ph="{...}" />
+            <marker date="1524436730537" expanded="true" signature="9516:9534" ph="/**...*/" />
+            <marker date="1524436730537" expanded="true" signature="9627:9679" ph="{...}" />
+            <marker date="1524436730537" expanded="true" signature="9765:9817" ph="{...}" />
+            <marker date="1524436730537" expanded="true" signature="9914:9966" ph="{...}" />
+            <marker date="1524436730537" expanded="true" signature="10099:10151" ph="{...}" />
+            <marker date="1524436730537" expanded="true" signature="10295:10347" ph="{...}" />
+            <marker date="1524436730537" expanded="true" signature="10412:10464" ph="{...}" />
+            <marker date="1524436730537" expanded="false" signature="10519:10530" ph=" { " />
+            <marker date="1524436730537" expanded="false" signature="10566:10572" ph=" }" />
+            <marker date="1524436730537" expanded="true" signature="10638:10690" ph="{...}" />
+            <marker date="1524436730537" expanded="false" signature="10735:10746" ph=" { " />
+            <marker date="1524436730537" expanded="false" signature="10782:10788" ph=" }" />
+            <marker date="1524436730537" expanded="true" signature="10872:10924" ph="{...}" />
+            <marker date="1524436730537" expanded="false" signature="10979:10990" ph=" { " />
+            <marker date="1524436730537" expanded="false" signature="11026:11032" ph=" }" />
+            <marker date="1524436730537" expanded="true" signature="11137:11189" ph="{...}" />
+            <marker date="1524436730537" expanded="false" signature="11238:11249" ph=" { " />
+            <marker date="1524436730537" expanded="false" signature="11285:11291" ph=" }" />
+            <marker date="1524436730537" expanded="true" signature="11355:11407" ph="{...}" />
+            <marker date="1524436730537" expanded="true" signature="11477:11529" ph="{...}" />
+            <marker date="1524436730537" expanded="false" signature="11587:11598" ph=" { " />
+            <marker date="1524436730537" expanded="false" signature="11634:11640" ph=" }" />
+            <marker date="1524436730537" expanded="true" signature="11705:11757" ph="{...}" />
+            <marker date="1524436730537" expanded="false" signature="11812:11823" ph=" { " />
+            <marker date="1524436730537" expanded="false" signature="11859:11865" ph=" }" />
+            <marker date="1524436730537" expanded="true" signature="11954:12006" ph="{...}" />
+            <marker date="1524436730537" expanded="true" signature="12084:12136" ph="{...}" />
+            <marker date="1524436730537" expanded="true" signature="12220:12272" ph="{...}" />
+            <marker date="1524436730537" expanded="true" signature="12351:12403" ph="{...}" />
+            <marker date="1524436730537" expanded="false" signature="12464:12475" ph=" { " />
+            <marker date="1524436730537" expanded="false" signature="12511:12517" ph=" }" />
+            <marker date="1524436730537" expanded="true" signature="12601:12653" ph="{...}" />
+            <marker date="1524436730537" expanded="true" signature="12731:12783" ph="{...}" />
+            <marker date="1524436730537" expanded="true" signature="12850:12902" ph="{...}" />
+            <marker date="1524436730537" expanded="true" signature="12975:13027" ph="{...}" />
+            <marker date="1524436730537" expanded="true" signature="13152:13204" ph="{...}" />
+            <marker date="1524436730537" expanded="true" signature="13301:13353" ph="{...}" />
+            <marker date="1524436730537" expanded="true" signature="13439:13491" ph="{...}" />
+            <marker date="1524436730537" expanded="true" signature="13583:13635" ph="{...}" />
+            <marker date="1524436730537" expanded="true" signature="13779:13831" ph="{...}" />
+            <marker date="1524436730537" expanded="true" signature="13933:13985" ph="{...}" />
+            <marker date="1524436730537" expanded="true" signature="14070:14122" ph="{...}" />
+            <marker date="1524436730537" expanded="false" signature="14180:14191" ph=" { " />
+            <marker date="1524436730537" expanded="false" signature="14227:14233" ph=" }" />
+            <marker date="1524436730537" expanded="false" signature="14268:14279" ph=" { " />
+            <marker date="1524436730537" expanded="false" signature="14315:14321" ph=" }" />
+            <marker date="1524436730537" expanded="false" signature="14379:14390" ph=" { " />
+            <marker date="1524436730537" expanded="false" signature="14426:14432" ph=" }" />
+            <marker date="1524436730537" expanded="false" signature="14479:14490" ph=" { " />
+            <marker date="1524436730537" expanded="false" signature="14526:14532" ph=" }" />
+            <marker date="1524436730537" expanded="true" signature="14622:14674" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="43" lean-forward="false" selection-start-line="12" selection-start-column="43" selection-end-line="12" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_tracker.xml">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="645">
+          <caret line="43" column="63" lean-forward="false" selection-start-line="43" selection-start-column="63" selection-end-line="43" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_data_collection.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/tjik/myshakedemo/DataCollection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="870">
+          <caret line="100" column="5" lean-forward="true" selection-start-line="100" selection-start-column="5" selection-end-line="100" selection-end-column="5" />
+          <folding>
+            <element signature="method#CheckRegistration#0;class#DataCollection#0" expanded="false" />
+            <element signature="method#onDestroy#0;class#DataCollection#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/tjik/myshakedemo/FFT.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="450">
@@ -3391,7 +3665,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/tjik/myshakedemo/TrackerActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1395">
+        <state relative-caret-position="1185">
           <caret line="99" column="0" lean-forward="false" selection-start-line="99" selection-start-column="0" selection-end-line="99" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -3421,26 +3695,46 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/tjik/myshakedemo/MainActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/tjik/myshakedemo/SensorService.java" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="365">
-          <caret line="257" column="9" lean-forward="false" selection-start-line="234" selection-start-column="8" selection-end-line="257" selection-end-column="9" />
+        <state relative-caret-position="449">
+          <caret line="38" column="69" lean-forward="false" selection-start-line="38" selection-start-column="69" selection-end-line="38" selection-end-column="69" />
           <folding />
         </state>
       </provider>
+      <provider editor-type-id="android-manifest">
+        <state />
+      </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/tjik/myshakedemo/SensorService.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/tjik/myshakedemo/DataCollectionServiceBroadcastReceiver.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="36" column="25" lean-forward="false" selection-start-line="36" selection-start-column="25" selection-end-line="36" selection-end-column="25" />
-          <folding />
+        <state relative-caret-position="135">
+          <caret line="9" column="70" lean-forward="false" selection-start-line="9" selection-start-column="70" selection-end-line="9" selection-end-column="70" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/tjik/myshakedemo/DataCollectionService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="811">
+          <caret line="73" column="28" lean-forward="true" selection-start-line="73" selection-start-column="28" selection-end-line="73" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2203#2204#0" expanded="true" />
+            <element signature="e#2230#2231#0" expanded="true" />
+            <element signature="e#2477#2792#0" expanded="true" />
+            <element signature="e#2791#2792#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/tjik/myshakedemo/DataCollection.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-9">
-          <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+        <state relative-caret-position="183">
+          <caret line="46" column="75" lean-forward="false" selection-start-line="46" selection-start-column="75" selection-end-line="46" selection-end-column="75" />
           <folding>
             <element signature="method#CheckRegistration#0;class#DataCollection#0" expanded="false" />
             <element signature="method#onDestroy#0;class#DataCollection#0" expanded="false" />
@@ -3448,29 +3742,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/tjik/myshakedemo/DataCollectionService.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/tjik/myshakedemo/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="145">
-          <caret line="46" column="15" lean-forward="false" selection-start-line="46" selection-start-column="15" selection-end-line="46" selection-end-column="15" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1017#1018#0" expanded="true" />
-            <element signature="e#1044#1045#0" expanded="true" />
-            <element signature="e#1119#1360#0" expanded="true" />
-            <element signature="e#1359#1360#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="22" column="25" lean-forward="false" selection-start-line="22" selection-start-column="25" selection-end-line="22" selection-end-column="25" />
+        <state relative-caret-position="191">
+          <caret line="122" column="74" lean-forward="true" selection-start-line="119" selection-start-column="8" selection-end-line="122" selection-end-column="74" />
           <folding />
         </state>
-      </provider>
-      <provider editor-type-id="android-manifest">
-        <state />
       </provider>
     </entry>
   </component>
