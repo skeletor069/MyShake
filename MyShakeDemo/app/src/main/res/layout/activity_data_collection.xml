@@ -6,4 +6,71 @@
     android:layout_height="match_parent"
     tools:context=".DataCollection">
 
+    <TextView
+        android:id="@+id/x_label"
+        android:textAlignment="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="FFT Peak : X"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/x_data"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textAlignment="center"
+        app:layout_constraintTop_toBottomOf="@+id/x_label" />
+
+    <TextView
+        android:id="@+id/y_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textAlignment="center"
+        android:text="FFT Peak : Y"
+        app:layout_constraintTop_toBottomOf="@+id/x_data" />
+
+    <TextView
+        android:id="@+id/y_data"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textAlignment="center"
+        app:layout_constraintTop_toBottomOf="@+id/y_label" />
+
+    <TextView
+        android:id="@+id/z_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textAlignment="center"
+        android:text="FFT Peak : z"
+        app:layout_constraintTop_toBottomOf="@+id/y_data" />
+
+    <TextView
+        android:id="@+id/z_data"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textAlignment="center"
+        app:layout_constraintTop_toBottomOf="@+id/z_label" />
+
+    <TextView
+        android:id="@+id/mag_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textAlignment="center"
+        android:text="FFT Peak : z"
+        app:layout_constraintTop_toBottomOf="@+id/z_data" />
+
+    <TextView
+        android:id="@+id/mag_data"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textAlignment="center"
+        app:layout_constraintTop_toBottomOf="@+id/mag_label" />
 </android.support.constraint.ConstraintLayout>

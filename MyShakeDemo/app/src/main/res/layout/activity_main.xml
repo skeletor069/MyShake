@@ -12,7 +12,7 @@
         android:layout_height="20dp"
         android:text="Accelerometer Data"/>
 
-    <com.tjik.myshakedemo.CustomView
+    <com.tjik.myshakedemo.CustomGraphView
         android:id="@+id/xyzView"
         android:layout_width="match_parent"
         android:layout_height="150dp"

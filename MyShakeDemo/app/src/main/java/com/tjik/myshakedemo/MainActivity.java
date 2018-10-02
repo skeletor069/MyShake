@@ -11,7 +11,6 @@ import android.hardware.SensorManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
-import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.RingtoneManager;
 import android.os.AsyncTask;
@@ -64,7 +63,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     private final float NOISE = (float) 2.0;
 
     ArrayList<AccelerometerViewData> xyzData = new ArrayList<AccelerometerViewData>();
-    CustomView accelerometerView;
+    CustomGraphView accelerometerView;
     FFTView fftView;
 
     //example variables
@@ -102,7 +101,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         //AudioManager audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
         thePlayer = MediaPlayer.create(getApplicationContext(), RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM));
 
-        accelerometerView = (CustomView) findViewById(R.id.xyzView);
+        accelerometerView = (CustomGraphView) findViewById(R.id.xyzView);
         //fftView = (FFTView) findViewById(R.id.fftView);
         magnituedFFT = new double[wsize];
 

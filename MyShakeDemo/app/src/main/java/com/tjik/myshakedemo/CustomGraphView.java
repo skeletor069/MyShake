@@ -13,7 +13,7 @@ import android.view.View;
 import java.util.ArrayList;
 
 
-public class CustomView extends View{
+public class CustomGraphView extends View{
 
     ArrayList<AccelerometerViewData> viewData = new ArrayList<AccelerometerViewData>();
 
@@ -23,23 +23,23 @@ public class CustomView extends View{
     Paint whitePaint = new Paint();
     Paint blackPaint = new Paint();
 
-    public CustomView(Context context) {
+    public CustomGraphView(Context context) {
         super(context);
         init(null);
     }
 
-    public CustomView(Context context, @Nullable AttributeSet attrs) {
+    public CustomGraphView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         init(attrs);
     }
 
-    public CustomView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public CustomGraphView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(attrs);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    public CustomView(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public CustomGraphView(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         init(attrs);
     }
