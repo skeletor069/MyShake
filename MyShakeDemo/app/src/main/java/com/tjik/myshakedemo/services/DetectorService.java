@@ -17,20 +17,20 @@ import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
-import com.tjik.myshakedemo.DataCollection;
+import com.tjik.myshakedemo.QuakeDetectorMain;
 import com.tjik.myshakedemo.R;
 import com.tjik.myshakedemo.core.FFT;
 
 import static java.lang.Math.sqrt;
 
-public class DataCollectionService extends Service implements SensorEventListener {
+public class DetectorService extends Service implements SensorEventListener {
 
     public enum DataType{
         TYPE_X, TYPE_Y, TYPE_Z, TYPE_MAGNITUDE
     }
 
-    static DataCollectionService instance;
-    static final String TAG = "DataCollectionService";
+    static DetectorService instance;
+    static final String TAG = "DetectorService";
     static boolean timerStarted = false;
     SharedPreferences defaultPref;
     SensorManager mSensorManager;
@@ -45,7 +45,7 @@ public class DataCollectionService extends Service implements SensorEventListene
     double peakFFT_X, peakFFT_Y, peakFFT_Z, peakFFT_MAGNITUDE;
     double currentMagnitude = 0;
 
-    public DataCollectionService(Context applicationContext) {
+    public DetectorService(Context applicationContext) {
         super();
         defaultPref = PreferenceManager.getDefaultSharedPreferences(applicationContext.getApplicationContext());
         mSensorManager = (SensorManager) applicationContext.getSystemService(Context.SENSOR_SERVICE);
@@ -58,12 +58,12 @@ public class DataCollectionService extends Service implements SensorEventListene
         Log.d(TAG, "I am from Data Collection Service " + defaultPref);
     }
 
-    public DataCollectionService() {
+    public DetectorService() {
     }
 
-    public static DataCollectionService GetInstance(Context applicationContext){
+    public static DetectorService GetInstance(Context applicationContext){
         if(instance == null)
-            instance = new DataCollectionService(applicationContext);
+            instance = new DetectorService(applicationContext);
         return instance;
     }
 
@@ -75,7 +75,7 @@ public class DataCollectionService extends Service implements SensorEventListene
     @Override
     public int onStartCommand(Intent intent, int flags, int startId){
         super.onStartCommand(intent, flags, startId);
-        Intent notificationIntent = new Intent(this, DataCollection.class);
+        Intent notificationIntent = new Intent(this, QuakeDetectorMain.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0);
         Notification notification = new Notification.Builder(this)
                 .setContentTitle("Notification")
@@ -90,7 +90,7 @@ public class DataCollectionService extends Service implements SensorEventListene
     @Override
     public void onDestroy() {
         super.onDestroy();
-        Intent broadcastIntent = new Intent("DataCollection.RestartService");
+        Intent broadcastIntent = new Intent("Detector.RestartService");
         sendBroadcast(broadcastIntent);
         Log.d(TAG, "ondestroy!");
     }

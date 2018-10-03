@@ -11,6 +11,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -19,6 +20,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.tjik.myshakedemo.services.DataCollectionService;
+import com.tjik.myshakedemo.services.DetectorService;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -30,8 +32,9 @@ public class QuakeDetectorMain extends AppCompatActivity {
     DatabaseReference usersRef;
     SharedPreferences defaultPref;
     Intent serviceIntent;
-    DataCollectionService dataCollectionService;
-    TextView xDataText, yDataText, zDataText, magDataText;
+    DetectorService detectorService;
+    TextView fftThresholdText, fftCurrentText, statusText;
+    Switch protectionSwitch;
 
     TimerTask timerTask;
 
@@ -64,22 +67,23 @@ public class QuakeDetectorMain extends AppCompatActivity {
     };
 
     public void UpdateTextFields() {
-        xDataText.setText(defaultPref.getString("fft_x",""));
-        yDataText.setText(defaultPref.getString("fft_y",""));
-        zDataText.setText(defaultPref.getString("fft_z",""));
-        magDataText.setText(defaultPref.getString("fft_magnitude",""));
+//        xDataText.setText(defaultPref.getString("fft_x",""));
+//        yDataText.setText(defaultPref.getString("fft_y",""));
+//        zDataText.setText(defaultPref.getString("fft_z",""));
+//        magDataText.setText(defaultPref.getString("fft_magnitude",""));
     }
 
     void Initialize() {
         database = FirebaseDatabase.getInstance();
         usersRef = database.getReference("users");
         defaultPref = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        dataCollectionService = new DataCollectionService(this);
-        serviceIntent = new Intent(this, dataCollectionService.getClass());
-        xDataText = (TextView) findViewById(R.id.x_data);
-        yDataText = (TextView) findViewById(R.id.y_data);
-        zDataText = (TextView) findViewById(R.id.z_data);
-        magDataText = (TextView) findViewById(R.id.mag_data);
+        detectorService = DetectorService.GetInstance(this);
+        serviceIntent = new Intent(this, detectorService.getClass());
+        fftThresholdText = (TextView) findViewById(R.id.fft_threshold_text);
+        fftCurrentText = (TextView) findViewById(R.id.fft_current_text);
+        statusText = (TextView) findViewById(R.id.status_text);
+        protectionSwitch = (Switch) findViewById(R.id.switch_protection);
+
         if(!defaultPref.contains("fft_x")){
             AddInitialPreferenceFields();
         }else{
@@ -89,9 +93,7 @@ public class QuakeDetectorMain extends AppCompatActivity {
 
     void AddInitialPreferenceFields() {
         SharedPreferences.Editor editor = defaultPref.edit();
-        editor.putString("fft_x", "0");
-        editor.putString("fft_y", "0");
-        editor.putString("fft_z", "0");
+        editor.putBoolean("protection", false);
         editor.putString("fft_magnitude", "0");
         editor.commit();
     }
@@ -141,7 +143,7 @@ public class QuakeDetectorMain extends AppCompatActivity {
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     void StartDataCollectionService(){
-        if(!isServiceRunning(dataCollectionService.getClass())){
+        if(!isServiceRunning(detectorService.getClass())){
             startService(serviceIntent);
         }
     }

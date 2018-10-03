@@ -2,6 +2,7 @@ package com.tjik.myshakedemo;
 
 import android.annotation.TargetApi;
 import android.app.ActivityManager;
+import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -64,7 +65,7 @@ public class DataCollection extends AppCompatActivity {
     };
 
     public void UpdateTextFields() {
-        xDataText.setText(defaultPref.getString("fft_x",""));
+        xDataText.setText(dataCollectionService.GetCurrentMagnitude() + "");
         yDataText.setText(defaultPref.getString("fft_y",""));
         zDataText.setText(defaultPref.getString("fft_z",""));
         magDataText.setText(defaultPref.getString("fft_magnitude",""));
@@ -74,7 +75,7 @@ public class DataCollection extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         usersRef = database.getReference("users");
         defaultPref = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        dataCollectionService = new DataCollectionService(this);
+        dataCollectionService = DataCollectionService.GetInstance(this);
         serviceIntent = new Intent(this, dataCollectionService.getClass());
         xDataText = (TextView) findViewById(R.id.x_data);
         yDataText = (TextView) findViewById(R.id.y_data);
@@ -138,6 +139,8 @@ public class DataCollection extends AppCompatActivity {
         }
         return false;
     }
+
+
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     void StartDataCollectionService(){

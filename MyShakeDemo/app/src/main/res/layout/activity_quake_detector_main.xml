@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="10dp"
-    tools:context=".DataCollection">
+    android:padding="10dp">
 
     <Switch
         android:id="@+id/switch_protection"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Protection : Off"
+        android:textOff="@string/protection_off"
+        android:textOn="@string/protection_on"
         android:textColor="@android:color/holo_green_dark"
         android:textSize="18sp"
         android:textStyle="bold"

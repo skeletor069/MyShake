@@ -27,9 +27,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".QuakeDetectorMain">
+
+        </activity>
 
         <service
             android:name=".services.DataCollectionService"
+            android:enabled="true">
+        </service>
+        <service
+            android:name=".services.DetectorService"
             android:enabled="true">
         </service>
         <receiver android:name=".services.DataCollectionServiceBroadcastReceiver"
@@ -37,6 +44,13 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="DataCollection.RestartService"></action>
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".services.DetectorServiceBroadcastReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="Detector.RestartService"></action>
             </intent-filter>
         </receiver>
     </application>
