@@ -14,6 +14,11 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+    <string name="protection_off">Protection : Off</string>
+    <string name="protection_on">Protection : On</string>
+    <string name="stop_alarm">Stop Alarm</string>
+    <string name="fft_thershold">FFT Threshold</string>
+    <string name="current_fft">Current FFT</string>
     <string name="protection_warning">Please turn on the protection to get notified before the earthquake. </string>
     <string name="state_normal">Everything is normal. You can close the app now. You will be notified when earthquake is detected.</string>
     <string name="state_initiator">Possibility of earthquake. Waiting for sufficient number of response from other users.</string>

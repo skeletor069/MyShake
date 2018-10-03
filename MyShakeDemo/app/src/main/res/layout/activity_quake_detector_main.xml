@@ -19,22 +19,46 @@
         />
 
 
-
     <TextView
         android:id="@+id/mag_label"
-        android:layout_width="match_parent"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="FFT threshold : 0"
+        android:text="@string/fft_thershold"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/switch_protection" />
+
+    <TextView
+        android:id="@+id/fft_threshold_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="kjhkhjkj"
+        app:layout_constraintStart_toEndOf="@+id/mag_label"
         app:layout_constraintTop_toBottomOf="@+id/switch_protection" />
 
     <TextView
         android:id="@+id/mag_data"
-        android:layout_width="match_parent"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Current FFT : 0"
+        android:text="@string/current_fft"
+        android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@+id/mag_label" />
+
+    <TextView
+        android:id="@+id/fft_current_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="jhgjgj"
+        app:layout_constraintStart_toEndOf="@+id/mag_data"
+        app:layout_constraintTop_toBottomOf="@+id/mag_label" />
+
 
     <com.tjik.myshakedemo.custom_views.FFTView
         android:id="@+id/FFTView"
