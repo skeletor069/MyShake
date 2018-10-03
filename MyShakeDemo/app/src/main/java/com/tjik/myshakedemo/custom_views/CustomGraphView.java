@@ -1,4 +1,4 @@
-package com.tjik.myshakedemo;
+package com.tjik.myshakedemo.custom_views;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -9,6 +9,8 @@ import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.util.AttributeSet;
 import android.view.View;
+
+import com.tjik.myshakedemo.core.AccelerometerViewData;
 
 import java.util.ArrayList;
 

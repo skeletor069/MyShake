@@ -1,4 +1,4 @@
-package com.tjik.myshakedemo;
+package com.tjik.myshakedemo.core;
 
 /*
  *  Copyright 2006-2007 Columbia University.

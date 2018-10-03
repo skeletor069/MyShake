@@ -14,4 +14,8 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+    <string name="protection_warning">Please turn on the protection to get notified before the earthquake. </string>
+    <string name="state_normal">Everything is normal. You can close the app now. You will be notified when earthquake is detected.</string>
+    <string name="state_initiator">Possibility of earthquake. Waiting for sufficient number of response from other users.</string>
+    <string name="state_earthquake">Earthquake Detected!!! If the alarm is bothering you, please press the button below.</string>
 </resources>

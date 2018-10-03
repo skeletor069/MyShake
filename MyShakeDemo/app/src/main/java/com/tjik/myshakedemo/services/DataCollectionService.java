@@ -1,4 +1,4 @@
-package com.tjik.myshakedemo;
+package com.tjik.myshakedemo.services;
 
 import android.app.Notification;
 import android.app.PendingIntent;
@@ -16,6 +16,10 @@ import android.os.IBinder;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.util.Log;
+
+import com.tjik.myshakedemo.DataCollection;
+import com.tjik.myshakedemo.R;
+import com.tjik.myshakedemo.core.FFT;
 
 import static java.lang.Math.sqrt;
 

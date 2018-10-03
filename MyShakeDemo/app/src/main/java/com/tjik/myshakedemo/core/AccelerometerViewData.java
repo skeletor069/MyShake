@@ -1,4 +1,4 @@
-package com.tjik.myshakedemo;
+package com.tjik.myshakedemo.core;
 
 public class AccelerometerViewData {
     public float x;

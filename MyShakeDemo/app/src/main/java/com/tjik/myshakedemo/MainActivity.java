@@ -30,6 +30,12 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.tjik.myshakedemo.core.AccelerometerViewData;
+import com.tjik.myshakedemo.core.FFT;
+import com.tjik.myshakedemo.core.ShakeOrigin;
+import com.tjik.myshakedemo.core.ShakeSubscriber;
+import com.tjik.myshakedemo.custom_views.CustomGraphView;
+import com.tjik.myshakedemo.custom_views.FFTView;
 
 import java.util.ArrayList;
 

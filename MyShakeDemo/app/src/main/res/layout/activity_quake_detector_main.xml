@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    tools:context=".DataCollection">
+
+    <Switch
+        android:id="@+id/switch_protection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Protection : Off"
+        android:textColor="@android:color/holo_green_dark"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+
+
+    <TextView
+        android:id="@+id/mag_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="FFT threshold : 0"
+        app:layout_constraintTop_toBottomOf="@+id/switch_protection" />
+
+    <TextView
+        android:id="@+id/mag_data"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Current FFT : 0"
+        app:layout_constraintTop_toBottomOf="@+id/mag_label" />
+
+    <com.tjik.myshakedemo.custom_views.FFTView
+        android:id="@+id/FFTView"
+        android:layout_width="match_parent"
+        android:layout_height="114dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@+id/mag_data" />
+
+    <TextView
+        android:id="@+id/status_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@+id/FFTView"
+        />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginBottom="8dp"
+        android:text="Stop Alarm"
+        android:textSize="36sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+         />
+
+
+
+
+</android.support.constraint.ConstraintLayout>

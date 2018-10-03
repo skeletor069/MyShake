@@ -29,10 +29,10 @@
         </activity>
 
         <service
-            android:name=".DataCollectionService"
+            android:name=".services.DataCollectionService"
             android:enabled="true">
         </service>
-        <receiver android:name=".DataCollectionServiceBroadcastReceiver"
+        <receiver android:name=".services.DataCollectionServiceBroadcastReceiver"
             android:enabled="true"
             android:exported="true">
             <intent-filter>

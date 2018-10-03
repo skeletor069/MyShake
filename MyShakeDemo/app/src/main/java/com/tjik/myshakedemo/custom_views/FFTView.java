@@ -1,4 +1,4 @@
-package com.tjik.myshakedemo;
+package com.tjik.myshakedemo.custom_views;
 
 import android.content.Context;
 import android.graphics.Canvas;

@@ -1,8 +1,10 @@
-package com.tjik.myshakedemo;
+package com.tjik.myshakedemo.services;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+
+import com.tjik.myshakedemo.services.DataCollectionService;
 
 public class DataCollectionServiceBroadcastReceiver extends BroadcastReceiver{
     @Override

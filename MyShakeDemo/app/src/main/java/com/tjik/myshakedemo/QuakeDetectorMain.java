@@ -6,11 +6,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -23,7 +23,7 @@ import com.tjik.myshakedemo.services.DataCollectionService;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class DataCollection extends AppCompatActivity {
+public class QuakeDetectorMain extends AppCompatActivity {
 
     String myId = "";
     FirebaseDatabase database;
@@ -39,7 +39,7 @@ public class DataCollection extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_data_collection);
+        setContentView(R.layout.activity_quake_detector_main);
         Initialize();
         CheckRegistrationOnFirebase();
         StartDataCollectionService();
