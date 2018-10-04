@@ -77,7 +77,7 @@ public class DetectorService extends Service implements SensorEventListener, Loc
     long demoLongitude = 100;
     long demoLatitude = 100;
     final double FFT_THRESHOLD_EARTHQUAKE = 800;
-    final float MAXIMUM_RADIUS = 1000;
+    final float MAXIMUM_RADIUS = 15000;
 
 
     public DetectorService(Context applicationContext) {

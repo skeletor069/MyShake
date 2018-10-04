@@ -50,7 +50,7 @@ public class QuakeDetectorMain extends AppCompatActivity implements View.OnClick
     Switch protectionSwitch;
     Button stopAlarmBtn;
     TimerTask timerTask;
-    
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
