@@ -51,10 +51,10 @@ public class DataCollectionService extends Service implements SensorEventListene
         mSensorManager = (SensorManager) applicationContext.getSystemService(Context.SENSOR_SERVICE);
         mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         xArr = yArr = zArr = magnitudeArr = new double[windowSize];
-        if(!timerStarted) {
-            mSensorManager.registerListener((SensorEventListener) this, mAccelerometer, 2000);
-            timerStarted = true;
-        }
+        //if(!timerStarted) {
+
+          //  timerStarted = true;
+        //}
         Log.d(TAG, "I am from Data Collection Service " + defaultPref);
     }
 
@@ -75,6 +75,7 @@ public class DataCollectionService extends Service implements SensorEventListene
     @Override
     public int onStartCommand(Intent intent, int flags, int startId){
         super.onStartCommand(intent, flags, startId);
+        mSensorManager.registerListener((SensorEventListener) this, mAccelerometer, 2000);
         Intent notificationIntent = new Intent(this, DataCollection.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0);
         Notification notification = new Notification.Builder(this)
@@ -90,6 +91,7 @@ public class DataCollectionService extends Service implements SensorEventListene
     @Override
     public void onDestroy() {
         super.onDestroy();
+        mSensorManager.unregisterListener(this);
         Intent broadcastIntent = new Intent("DataCollection.RestartService");
         sendBroadcast(broadcastIntent);
         Log.d(TAG, "ondestroy!");

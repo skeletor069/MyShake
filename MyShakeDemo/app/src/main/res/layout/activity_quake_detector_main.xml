@@ -12,7 +12,8 @@
         android:layout_height="wrap_content"
         android:textOff="@string/protection_off"
         android:textOn="@string/protection_on"
-        android:textColor="@android:color/holo_green_dark"
+        android:text="@string/protection_off"
+        android:textColor="@color/colorAccent"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent"
@@ -61,7 +62,7 @@
 
 
     <com.tjik.myshakedemo.custom_views.FFTView
-        android:id="@+id/FFTView"
+        android:id="@+id/fft_view"
         android:layout_width="match_parent"
         android:layout_height="114dp"
         android:layout_marginTop="20dp"
@@ -73,11 +74,11 @@
         android:layout_height="wrap_content"
         android:text=""
         android:layout_marginTop="20dp"
-        app:layout_constraintTop_toBottomOf="@+id/FFTView"
+        app:layout_constraintTop_toBottomOf="@+id/fft_view"
         />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/stop_alarm_btn"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_marginBottom="8dp"

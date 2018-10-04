@@ -1,40 +1,52 @@
 package com.tjik.myshakedemo;
 
+import android.Manifest;
 import android.annotation.TargetApi;
 import android.app.ActivityManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.preference.PreferenceManager;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.tjik.myshakedemo.services.DataCollectionService;
 import com.tjik.myshakedemo.services.DetectorService;
 
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class QuakeDetectorMain extends AppCompatActivity {
+import static android.location.LocationManager.GPS_PROVIDER;
+
+public class QuakeDetectorMain extends AppCompatActivity implements View.OnClickListener{
+
+    public static boolean PROTECTION_ON = false;
 
     String myId = "";
     FirebaseDatabase database;
     DatabaseReference usersRef;
     SharedPreferences defaultPref;
+    LocationManager locationManager;
     Intent serviceIntent;
     DetectorService detectorService;
     TextView fftThresholdText, fftCurrentText, statusText;
     Switch protectionSwitch;
+    Button stopAlarmBtn;
 
     TimerTask timerTask;
 
@@ -45,8 +57,37 @@ public class QuakeDetectorMain extends AppCompatActivity {
         setContentView(R.layout.activity_quake_detector_main);
         Initialize();
         CheckRegistrationOnFirebase();
-        StartDataCollectionService();
+        InitializeLocationManager();
+        SetInitialState();
+        //StartDetectorService();
         StartTimerToUpdateTexts();
+
+    }
+
+    private void SetInitialState() {
+        fftThresholdText.setText(detectorService.GetEarthquakeThreshold() + "");
+        if(isServiceRunning(detectorService.getClass())){
+            PROTECTION_ON = true;
+            protectionSwitch.setChecked(true);
+            protectionSwitch.setText(protectionSwitch.getTextOn());
+            protectionSwitch.setTextColor(getResources().getColor(R.color.colorGreen));
+        }else{
+            PROTECTION_ON = false;
+            protectionSwitch.setChecked(false);
+            protectionSwitch.setText(protectionSwitch.getTextOff());
+            protectionSwitch.setTextColor(getResources().getColor(R.color.colorAccent));
+        }
+        // switch state
+    }
+
+    void InitializeLocationManager() {
+        locationManager = (LocationManager) getSystemService(android.content.Context.LOCATION_SERVICE);
+        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED ) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+            return;
+        }
+        locationManager.requestLocationUpdates(GPS_PROVIDER,0,0,detectorService);
+        detectorService.onLocationChanged(null);
     }
 
     void StartTimerToUpdateTexts() {
@@ -67,10 +108,7 @@ public class QuakeDetectorMain extends AppCompatActivity {
     };
 
     public void UpdateTextFields() {
-//        xDataText.setText(defaultPref.getString("fft_x",""));
-//        yDataText.setText(defaultPref.getString("fft_y",""));
-//        zDataText.setText(defaultPref.getString("fft_z",""));
-//        magDataText.setText(defaultPref.getString("fft_magnitude",""));
+        fftCurrentText.setText(detectorService.GetCurrentMagnitude() + "");
     }
 
     void Initialize() {
@@ -83,6 +121,9 @@ public class QuakeDetectorMain extends AppCompatActivity {
         fftCurrentText = (TextView) findViewById(R.id.fft_current_text);
         statusText = (TextView) findViewById(R.id.status_text);
         protectionSwitch = (Switch) findViewById(R.id.switch_protection);
+        protectionSwitch.setOnClickListener(this);
+        stopAlarmBtn = (Button) findViewById(R.id.stop_alarm_btn);
+        stopAlarmBtn.setOnClickListener(this);
 
         if(!defaultPref.contains("fft_x")){
             AddInitialPreferenceFields();
@@ -142,10 +183,16 @@ public class QuakeDetectorMain extends AppCompatActivity {
     }
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
-    void StartDataCollectionService(){
+    void StartDetectorService(){
         if(!isServiceRunning(detectorService.getClass())){
+            PROTECTION_ON = true;
             startService(serviceIntent);
         }
+    }
+
+    void StopDetectorServicePermanently(){
+        PROTECTION_ON = false;
+        stopService(serviceIntent);
     }
 
     @Override
@@ -155,4 +202,25 @@ public class QuakeDetectorMain extends AppCompatActivity {
         super.onDestroy();
 
     }
+
+    @Override
+    public void onClick(View view) {
+        if(view.getId() == R.id.switch_protection){
+            if(protectionSwitch.isChecked()){
+                Toast.makeText(getApplicationContext(), "Earthquale detection mode on", Toast.LENGTH_SHORT).show();
+                protectionSwitch.setTextColor(getResources().getColor(R.color.colorGreen));
+                protectionSwitch.setText(protectionSwitch.getTextOn());
+                StartDetectorService();
+            }else{
+                Toast.makeText(getApplicationContext(), "Earthquale detection mode off", Toast.LENGTH_SHORT).show();
+                protectionSwitch.setTextColor(getResources().getColor(R.color.colorAccent));
+                protectionSwitch.setText(protectionSwitch.getTextOff());
+                StopDetectorServicePermanently();
+            }
+        }else if(view.getId() == R.id.stop_alarm_btn){
+
+        }
+    }
+
+
 }
