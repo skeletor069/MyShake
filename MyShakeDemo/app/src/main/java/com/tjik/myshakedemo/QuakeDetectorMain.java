@@ -26,6 +26,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.tjik.myshakedemo.custom_views.FFTView;
 import com.tjik.myshakedemo.services.DetectorService;
 
 import java.util.Timer;
@@ -45,11 +46,11 @@ public class QuakeDetectorMain extends AppCompatActivity implements View.OnClick
     Intent serviceIntent;
     DetectorService detectorService;
     TextView fftThresholdText, fftCurrentText, statusText;
+    FFTView fftViewMagnitude;
     Switch protectionSwitch;
     Button stopAlarmBtn;
-
     TimerTask timerTask;
-
+    
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,12 +104,13 @@ public class QuakeDetectorMain extends AppCompatActivity implements View.OnClick
 
     public Handler mHandler = new Handler() {
         public void handleMessage(Message msg) {
-            UpdateTextFields();
+            UpdateUI();
         }
     };
 
-    public void UpdateTextFields() {
+    public void UpdateUI() {
         fftCurrentText.setText(detectorService.GetCurrentMagnitude() + "");
+        fftViewMagnitude.SetFFTData(detectorService.GetFFTData());
     }
 
     void Initialize() {
@@ -124,11 +126,12 @@ public class QuakeDetectorMain extends AppCompatActivity implements View.OnClick
         protectionSwitch.setOnClickListener(this);
         stopAlarmBtn = (Button) findViewById(R.id.stop_alarm_btn);
         stopAlarmBtn.setOnClickListener(this);
+        fftViewMagnitude = (FFTView) findViewById(R.id.fft_view_magnitude);
 
         if(!defaultPref.contains("fft_x")){
             AddInitialPreferenceFields();
         }else{
-            UpdateTextFields();
+            UpdateUI();
         }
     }
 

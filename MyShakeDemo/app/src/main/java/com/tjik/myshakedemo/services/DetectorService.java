@@ -59,7 +59,6 @@ public class DetectorService extends Service implements SensorEventListener, Loc
     DatabaseReference shakeOriginRef;
     DatabaseReference shakeSubscriberRef;
     SharedPreferences defaultPref;
-    LocationManager lm;
     SensorManager mSensorManager;
     Sensor mAccelerometer;
     MediaPlayer thePlayer;
@@ -91,6 +90,7 @@ public class DetectorService extends Service implements SensorEventListener, Loc
         mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         magnitudeArr = new double[windowSize];
         thePlayer = MediaPlayer.create(applicationContext, RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM));
+        freqCounts = new double[windowSize];
         if(!timerStarted) {
             mSensorManager.registerListener((SensorEventListener) this, mAccelerometer, 2000);
             timerStarted = true;
@@ -111,6 +111,7 @@ public class DetectorService extends Service implements SensorEventListener, Loc
         return currentMagnitude;
     }
     public double GetEarthquakeThreshold(){ return FFT_THRESHOLD_EARTHQUAKE; }
+    public double[] GetFFTData(){ return freqCounts; }
 
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
