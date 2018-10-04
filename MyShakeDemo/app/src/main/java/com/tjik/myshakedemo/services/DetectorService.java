@@ -284,7 +284,7 @@ public class DetectorService extends Service implements SensorEventListener, Loc
 
     @Override
     public void onSensorChanged(SensorEvent sensorEvent) {
-        if (sensorEvent.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
+        if (QuakeDetectorMain.PROTECTION_ON && sensorEvent.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
             ProcessAccelerometerData(sensorEvent);
         }
     }
