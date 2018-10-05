@@ -8,6 +8,7 @@ public class ShakeOrigin {
     public long longitude;
     public long timeStamp;
     public boolean alarm;
+    public boolean canceled;
 
     public ShakeOrigin(){}
 
@@ -17,6 +18,16 @@ public class ShakeOrigin {
         this.latitude = latitude;
 //        this.timeStamp = timeStamp;
         this.alarm = alarm;
+        this.canceled = false;
+    }
+
+    public ShakeOrigin(String originId, long longitude, long latitude, boolean alarm, boolean canceled){
+        this.originId = originId;
+        this.longitude = longitude;
+        this.latitude = latitude;
+//        this.timeStamp = timeStamp;
+        this.alarm = alarm;
+        this.canceled = canceled;
     }
 
     public long distanceFromOrigin(long longitude, long latitude){

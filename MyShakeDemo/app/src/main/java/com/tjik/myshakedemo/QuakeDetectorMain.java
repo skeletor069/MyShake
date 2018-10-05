@@ -78,7 +78,8 @@ public class QuakeDetectorMain extends AppCompatActivity implements View.OnClick
             protectionSwitch.setText(protectionSwitch.getTextOff());
             protectionSwitch.setTextColor(getResources().getColor(R.color.colorAccent));
         }
-        // switch state
+        UpdateStopAlarmBtnState();
+        UpdateLogText();
     }
 
     void InitializeLocationManager() {
@@ -111,6 +112,30 @@ public class QuakeDetectorMain extends AppCompatActivity implements View.OnClick
     public void UpdateUI() {
         fftCurrentText.setText(detectorService.GetCurrentMagnitude() + "");
         fftViewMagnitude.SetFFTData(detectorService.GetFFTData());
+        UpdateStopAlarmBtnState();
+        UpdateLogText();
+    }
+
+    void UpdateLogText(){
+        if(!PROTECTION_ON)
+            statusText.setText(getResources().getString(R.string.protection_warning));
+        else {
+            if(detectorService.isAlarmPlaying())
+                statusText.setText(getResources().getString(R.string.state_earthquake));
+            else if(detectorService.isInitiator())
+                statusText.setText(getResources().getString(R.string.state_initiator));
+            else if(detectorService.isSecondaryDetector())
+                statusText.setText(getResources().getString(R.string.state_secondary));
+            else
+                statusText.setText(getResources().getString(R.string.state_normal));
+        }
+    }
+
+    void UpdateStopAlarmBtnState(){
+        if(detectorService.isAlarmPlaying())
+            stopAlarmBtn.setVisibility(View.VISIBLE);
+        else
+            stopAlarmBtn.setVisibility(View.INVISIBLE);
     }
 
     void Initialize() {
@@ -152,6 +177,7 @@ public class QuakeDetectorMain extends AppCompatActivity implements View.OnClick
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     RegisterNewUserOnFirebase(dataSnapshot);
                     SaveMyIdInPreference();
+                    detectorService.SetMyId(myId);
                 }
 
                 @Override
@@ -221,7 +247,7 @@ public class QuakeDetectorMain extends AppCompatActivity implements View.OnClick
                 StopDetectorServicePermanently();
             }
         }else if(view.getId() == R.id.stop_alarm_btn){
-
+            detectorService.StopAlarm();
         }
     }
 

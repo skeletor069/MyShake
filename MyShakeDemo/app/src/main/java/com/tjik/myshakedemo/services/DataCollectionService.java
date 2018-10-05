@@ -88,6 +88,8 @@ public class DataCollectionService extends Service implements SensorEventListene
         return START_STICKY;
     }
 
+
+
     @Override
     public void onDestroy() {
         super.onDestroy();

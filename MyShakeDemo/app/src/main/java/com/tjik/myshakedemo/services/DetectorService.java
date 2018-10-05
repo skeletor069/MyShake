@@ -1,20 +1,17 @@
 package com.tjik.myshakedemo.services;
 
-import android.Manifest;
 import android.app.Notification;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.location.Location;
 import android.location.LocationListener;
-import android.location.LocationManager;
 import android.media.MediaPlayer;
 import android.media.RingtoneManager;
 import android.os.AsyncTask;
@@ -24,7 +21,6 @@ import android.os.IBinder;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
-import android.support.v4.app.ActivityCompat;
 import android.util.Log;
 
 import com.google.firebase.database.DataSnapshot;
@@ -38,7 +34,9 @@ import com.tjik.myshakedemo.core.FFT;
 import com.tjik.myshakedemo.core.ShakeOrigin;
 import com.tjik.myshakedemo.core.ShakeSubscriber;
 
-import static android.location.LocationManager.GPS_PROVIDER;
+import java.util.Timer;
+import java.util.TimerTask;
+
 import static java.lang.Math.sqrt;
 
 public class DetectorService extends Service implements SensorEventListener, LocationListener {
@@ -48,7 +46,7 @@ public class DetectorService extends Service implements SensorEventListener, Loc
     }
 
     enum ActionState{
-        NEUTRAL, INITIATOR, SECONDARY, ALARM_SET, ALARMED
+        NEUTRAL, INITIATOR, SECONDARY, ALARM_SET, ALARMED, ALARM_STOPPED
     }
 
     static DetectorService instance;
@@ -60,10 +58,11 @@ public class DetectorService extends Service implements SensorEventListener, Loc
     DatabaseReference shakeSubscriberRef;
     SharedPreferences defaultPref;
     SensorManager mSensorManager;
+    ShakeOrigin earthquaeOrigin = null;
     Sensor mAccelerometer;
     MediaPlayer thePlayer;
-    long currentLongitude;
-    long currentLatitude;
+    //long currentLongitude;
+    //long currentLatitude;
     ActionState actionState = ActionState.NEUTRAL;
 
     float[] gravity = {0,0,0};
@@ -74,10 +73,13 @@ public class DetectorService extends Service implements SensorEventListener, Loc
     double[] magnitudeArr;
     double currentMagnitude = 0;
     String myId = "";
-    long demoLongitude = 100;
-    long demoLatitude = 100;
+    boolean initiator = false;
+    long currentLongitude = 100;
+    long currentLatitude = 100;
     final double FFT_THRESHOLD_EARTHQUAKE = 800;
-    final float MAXIMUM_RADIUS = 15000;
+    final float MAXIMUM_RADIUS = 50000;
+    final float NOTIFICATION_RADIUS = 500000;
+    //String logText = "";
 
 
     public DetectorService(Context applicationContext) {
@@ -91,6 +93,8 @@ public class DetectorService extends Service implements SensorEventListener, Loc
         magnitudeArr = new double[windowSize];
         thePlayer = MediaPlayer.create(applicationContext, RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM));
         freqCounts = new double[windowSize];
+        myId = defaultPref.getString("myId","");
+        StartListeningForEarthquakeAlarm();
         if(!timerStarted) {
             mSensorManager.registerListener((SensorEventListener) this, mAccelerometer, 2000);
             timerStarted = true;
@@ -112,6 +116,17 @@ public class DetectorService extends Service implements SensorEventListener, Loc
     }
     public double GetEarthquakeThreshold(){ return FFT_THRESHOLD_EARTHQUAKE; }
     public double[] GetFFTData(){ return freqCounts; }
+    public boolean isAlarmPlaying(){ return actionState == ActionState.ALARMED; }
+    public boolean isInitiator(){ return initiator; }
+    public boolean isSecondaryDetector(){ return actionState == ActionState.SECONDARY; }
+    public void SetMyId(String myId){
+        this.myId = myId;
+    }
+
+    public void StopAlarm(){
+        thePlayer.stop();
+        actionState = ActionState.ALARM_STOPPED;
+    }
 
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
@@ -122,6 +137,7 @@ public class DetectorService extends Service implements SensorEventListener, Loc
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0);
         Notification notification = GetNotificationObject(pendingIntent);
         startForeground(1, notification);
+        Log.d(TAG, "on start ");
         return START_STICKY;
     }
 
@@ -153,69 +169,101 @@ public class DetectorService extends Service implements SensorEventListener, Loc
         currentMagnitude = data;
         if(actionState == ActionState.NEUTRAL && currentMagnitude >= FFT_THRESHOLD_EARTHQUAKE){
             //AppendLog("Shake detected");
-            shakeOriginRef.addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    if(dataSnapshot.getChildrenCount() > 0){
-                        NearestShakeOrigin nearestShakeOrigin = GetNearestShakeOrigin(dataSnapshot);
-                        if(nearestShakeOrigin.distanceToOrigin < MAXIMUM_RADIUS){
-                            String originId = RegisterAsShakeSubscriber(nearestShakeOrigin);
-                            shakeOriginRef.removeEventListener(this);
-                            StartListeningForAlarmCommand(originId);
-                        }else{
-                            // the origins are too far. so create new shake origin
-                        }
-
-                    }else{
-                        // there are no origins right now. Create new shake origin
-                        //AppendLog("I am the first one");
-                        //AppendLog("Sending location to server");
-                        CreateNewShakeOrigin();
-                        shakeOriginRef.removeEventListener(this);
-                        // start listening shake subscriber database
-                        StartListeningAsInitiator();
-                    }
-                }
-
-                private String RegisterAsShakeSubscriber(NearestShakeOrigin nearestShakeOrigin) {
-                    String originId = nearestShakeOrigin.shakeOrigin.originId;
-                    ShakeSubscriber shakeSubscriber = new ShakeSubscriber(originId, myId);
-                    shakeSubscriberRef.child(myId).setValue(shakeSubscriber);
-                    actionState = ActionState.SECONDARY;
-                    return originId;
-                }
-
-                void CreateNewShakeOrigin() {
-                    ShakeOrigin shakeOrigin = new ShakeOrigin(myId, demoLongitude, demoLatitude, false);
-                    shakeOriginRef.child(myId).setValue(shakeOrigin);
-                    actionState = ActionState.INITIATOR;
-                }
-
-                NearestShakeOrigin GetNearestShakeOrigin(DataSnapshot dataSnapshot){
-                    NearestShakeOrigin nearestOrigin = new NearestShakeOrigin();
-                    for(DataSnapshot originSnapshot:dataSnapshot.getChildren()){
-                        ShakeOrigin temp = originSnapshot.getValue(ShakeOrigin.class);
-                        long tempDist = temp.distanceFromOrigin(demoLongitude, demoLatitude);
-                        if(tempDist < nearestOrigin.distanceToOrigin){
-                            nearestOrigin.shakeOrigin = temp;
-                            nearestOrigin.distanceToOrigin = tempDist;
-                        }
-                    }
-                    return nearestOrigin;
-                }
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-
-                }
-            });
+            actionState = ActionState.INITIATOR;
+            ActionAfterEarthquakeDetection();
         }
 
+    }
+
+    public void ActionAfterEarthquakeDetection(){
+        shakeOriginRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if(dataSnapshot.getChildrenCount() > 0){
+                    NearestShakeOrigin nearestShakeOrigin = GetNearestShakeOrigin(dataSnapshot);
+                    Log.d(TAG, "onDataChange: " + nearestShakeOrigin.distanceToOrigin);
+                    if(nearestShakeOrigin.distanceToOrigin < MAXIMUM_RADIUS){
+                        RegisterAsShakeSubscriber(nearestShakeOrigin);
+                    }else{
+                        // the origins are too far. so create new shake origin
+                        InitiateEarthquakeWarning();
+                    }
+
+                }else{
+                    // there are no origins right now. Create new shake origin
+                    //AppendLog("I am the first one");
+                    //AppendLog("Sending location to server");
+                    InitiateEarthquakeWarning();
+                }
+            }
+
+            void InitiateEarthquakeWarning(){
+                //logText = "Initiated earthquake warning. Waiting for other devices to detect earthquake to verify the detection.";
+                initiator = true;
+                CreateNewShakeOrigin();
+                shakeOriginRef.removeEventListener(this);
+                StartListeningAsInitiator();
+            }
+
+            void RegisterAsShakeSubscriber(NearestShakeOrigin nearestShakeOrigin){
+                //logText = "Nearby earthquake origin found. Registering as a secondary detector. Waiting for alarm";
+                initiator = false;
+                CreateShakeSubscriber(nearestShakeOrigin);
+                shakeOriginRef.removeEventListener(this);
+            }
+
+            void CreateShakeSubscriber(NearestShakeOrigin nearestShakeOrigin) {
+                String originId = nearestShakeOrigin.shakeOrigin.originId;
+                ShakeSubscriber shakeSubscriber = new ShakeSubscriber(originId, myId);
+                shakeSubscriberRef.child(myId).setValue(shakeSubscriber);
+                actionState = ActionState.SECONDARY;
+            }
+
+            void CreateNewShakeOrigin() {
+                ShakeOrigin shakeOrigin = new ShakeOrigin(myId, currentLongitude, currentLatitude, false);
+                shakeOriginRef.child(myId).setValue(shakeOrigin);
+                actionState = ActionState.INITIATOR;
+            }
+
+            NearestShakeOrigin GetNearestShakeOrigin(DataSnapshot dataSnapshot){
+                NearestShakeOrigin nearestOrigin = new NearestShakeOrigin();
+                for(DataSnapshot originSnapshot:dataSnapshot.getChildren()){
+                    ShakeOrigin temp = originSnapshot.getValue(ShakeOrigin.class);
+                    long tempDist = temp.distanceFromOrigin(currentLongitude, currentLatitude);
+                    if(tempDist < nearestOrigin.distanceToOrigin){
+                        nearestOrigin.shakeOrigin = temp;
+                        nearestOrigin.distanceToOrigin = tempDist;
+                    }
+                }
+                return nearestOrigin;
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 
     void PlayAlarm(ActionState state){
         actionState = state;
         thePlayer.start();
+    }
+
+    void BroadcastStopWarningAfter120s(){
+        new Timer().schedule(new TimerTask() {
+            @Override
+            public void run() {
+                shakeOriginRef.child(myId).removeValue();
+            }
+        }, 120000);
+    }
+
+    void Reset(){
+        earthquaeOrigin = null;
+        initiator = false;
+        actionState = ActionState.NEUTRAL;
+        StartListeningForEarthquakeAlarm();
     }
 
     /*
@@ -228,15 +276,16 @@ public class DetectorService extends Service implements SensorEventListener, Loc
                 if(dataSnapshot.getChildrenCount() > 0){
                     int subscriberCount = GetSubscriberCount(dataSnapshot);
                     if(subscriberCount >= 1) {
+                        //logText = "Earthquake confirmed!! Broadcasting alarm command";
                         BroadcastEarthquakeConfirmation();
                         shakeSubscriberRef.removeEventListener(this);
-                        PlayAlarm(ActionState.ALARM_SET);
+                        BroadcastStopWarningAfter120s();
                     }
                 }
             }
 
             private void BroadcastEarthquakeConfirmation() {
-                ShakeOrigin alarmObj = new ShakeOrigin(myId, demoLongitude, demoLatitude, true);
+                ShakeOrigin alarmObj = new ShakeOrigin(myId, currentLongitude, currentLatitude, true);
                 shakeOriginRef.child(myId).setValue(alarmObj);
             }
 
@@ -268,6 +317,102 @@ public class DetectorService extends Service implements SensorEventListener, Loc
                     if(originSnapshot.getKey().equals(originId)){
                         ShakeOrigin origin = originSnapshot.getValue(ShakeOrigin.class);
                         if(origin.alarm){
+                            shakeSubscriberRef.child(myId).removeValue();
+                            shakeOriginRef.removeEventListener(this);
+                            PlayAlarm(ActionState.ALARMED);
+                            //shakeButton.setVisibility(View.VISIBLE);
+                        }
+                        break;
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) { }
+        });
+    }
+
+    void StartListeningForEarthquakeAlarm(){
+        shakeOriginRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if(QuakeDetectorMain.PROTECTION_ON) {
+                    ShakeOrigin nearestOrigin = null;
+                    float nearestDistance = NOTIFICATION_RADIUS;
+                    for (DataSnapshot originSnapshot : dataSnapshot.getChildren()) {
+                        ShakeOrigin origin = originSnapshot.getValue(ShakeOrigin.class);
+                        if (origin.alarm && origin.distanceFromOrigin(currentLongitude, currentLatitude) < nearestDistance) {
+                            nearestDistance = origin.distanceFromOrigin(currentLongitude, currentLatitude);
+                            nearestOrigin = origin;
+                        }
+                        break;
+                    }
+                    if(nearestOrigin != null){
+                        //logText = "Earthquake confirmed!!!";
+                        earthquaeOrigin = nearestOrigin;
+                        shakeOriginRef.removeEventListener(this);
+                        PlayAlarm(ActionState.ALARMED);
+                        StartListeningForShakeOriginToBeDeletedByInitiator();
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) { }
+        });
+    }
+
+    void StartListeningForShakeOriginToBeDeletedByInitiator(){
+        shakeOriginRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                boolean found = false;
+                for(DataSnapshot originSnapshot:dataSnapshot.getChildren()){
+                    if(originSnapshot.getKey().equals(earthquaeOrigin.originId)){
+                        found = true;
+                        break;
+                    }
+                }
+                if(!found){
+                    //logText = "Tracking accelerometer to detect earthquake";
+                    shakeOriginRef.removeEventListener(this);
+                    RemoveMeFromSubscriberList();
+                    Reset();
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) { }
+        });
+    }
+
+    void RemoveMeFromSubscriberList(){
+        shakeSubscriberRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot subscriber : dataSnapshot.getChildren()){
+                    if(subscriber.getKey().equals(myId)){
+                        shakeSubscriberRef.removeEventListener(this);
+                        shakeSubscriberRef.child(myId).removeValue();
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    void StartListeningForCancelWarning(){
+        shakeOriginRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for(DataSnapshot originSnapshot:dataSnapshot.getChildren()){
+                    if(originSnapshot.getKey().equals(earthquaeOrigin.originId)){
+                        ShakeOrigin origin = originSnapshot.getValue(ShakeOrigin.class);
+                        if(origin.canceled){
                             shakeSubscriberRef.child(myId).removeValue();
                             shakeOriginRef.removeEventListener(this);
                             PlayAlarm(ActionState.ALARMED);
